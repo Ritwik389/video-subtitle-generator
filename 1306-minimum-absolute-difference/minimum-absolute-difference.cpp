@@ -5,19 +5,18 @@ public:
         sort(arr.begin(), arr.end());
         vector<vector<int>> ans;
         for(int i =0; i<arr.size()-1; i++){
-            mindiff = min(mindiff, arr[i+1]-arr[i]);
-        }
-        for(int i =0; i<arr.size()-1; i++){
             int diff = arr[i+1] - arr[i];
-            if(diff == mindiff) ans.push_back({arr[i], arr[i+1]});
+            if(diff<mindiff){
+                mindiff = diff;
+                ans.clear();
+                ans.push_back({arr[i], arr[i+1]});
+            }
+            else if (mindiff == diff){
+                ans.push_back({arr[i], arr[i+1]});
+            }
         }
+        
         return ans;
-
-
-
-
-
-
         }
 
         
